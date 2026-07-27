@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary SEO Meta -->
+    <title>SFCC Architect Challenge · Test SFCC con 180+ preguntas</title>
+    <meta name="title" content="SFCC Architect Challenge · Test SFCC con 180+ preguntas">
+    <meta name="description" content="Test SFCC con 180+ preguntas para repasar SFRA, OCAPI, SCAPI, SLAS y PWA Kit. Modo desafío, formación, repaso y examen global. Para devs y arquitectos SFCC.">
+    <meta name="keywords" content="test SFCC, examen SFCC, preguntas SFCC, SFCC architect, SFRA quiz, OCAPI vs SCAPI, PWA Kit, SLAS, B2C Commerce, Salesforce Commerce Cloud, quiz SFCC, preparación entrevista SFCC, certificación SFCC">
+    <meta name="author" content="SFCC Architect Challenge">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+    <meta name="theme-color" content="#1267e5">
+    <meta name="application-name" content="SFCC Architect Challenge">
+
+    <!-- Canonical & Hreflang -->
+    <link rel="canonical" href="https://sfcc-architect-challenge.example.com/">
+    <link rel="alternate" hreflang="es" href="https://sfcc-architect-challenge.example.com/?lang=es">
+    <link rel="alternate" hreflang="en" href="https://sfcc-architect-challenge.example.com/?lang=en">
+    <link rel="alternate" hreflang="x-default" href="https://sfcc-architect-challenge.example.com/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sfcc-architect-challenge.example.com/">
+    <meta property="og:title" content="SFCC Architect Challenge · Test SFCC con 180+ preguntas">
+    <meta property="og:description" content="Test interactivo para repasar conceptos de Salesforce B2C Commerce. Cubre SFRA, OCAPI, SCAPI, SLAS, PWA Kit, Managed Runtime. Modo desafío, formación, repaso de fallos y examen global.">
+    <meta property="og:image" content="https://sfcc-architect-challenge.example.com/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="es_ES">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:site_name" content="SFCC Architect Challenge">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://sfcc-architect-challenge.example.com/">
+    <meta name="twitter:title" content="SFCC Architect Challenge · Test SFCC con 180+ preguntas">
+    <meta name="twitter:description" content="Test interactivo para repasar SFCC. SFRA, OCAPI, SCAPI, SLAS, PWA Kit, Managed Runtime. 4 modos: desafío, formación, repaso de fallos y examen global.">
+    <meta name="twitter:image" content="https://sfcc-architect-challenge.example.com/og-image.png">
+    <meta name="twitter:label1" content="Temas">
+    <meta name="twitter:data1" content="SFRA, OCAPI, SCAPI, SLAS, PWA Kit">
+    <meta name="twitter:label2" content="Preguntas">
+    <meta name="twitter:data2" content="180+">
+
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.webmanifest">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="SFCC Quiz">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+    <!-- Icons (relative paths so file:// works locally) -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="mask-icon" href="favicon.svg" color="#1267e5">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Structured Data: WebApplication -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "SFCC Architect Challenge",
+        "alternateName": "Test SFCC",
+        "description": "Test interactivo para repasar conceptos de Salesforce B2C Commerce Cloud. Cubre SFRA, OCAPI, SCAPI, SLAS, PWA Kit, Managed Runtime y arquitectura. 4 modos de práctica: desafío, formación, repaso de fallos y examen global.",
+        "url": "https://sfcc-architect-challenge.example.com/",
+        "applicationCategory": "EducationalApplication",
+        "applicationSubCategory": "Quiz",
+        "operatingSystem": "Any (Web)",
+        "browserRequirements": "Modern browser with JavaScript enabled",
+        "inLanguage": ["es", "en"],
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "EUR"
+        },
+        "featureList": [
+            "180+ preguntas técnicas de SFCC",
+            "Modo desafío por bloque temático",
+            "Modo formación con explicación tras cada respuesta",
+            "Modo repaso de fallos",
+            "Examen global con filtro de dificultad",
+            "Búsqueda por palabra clave",
+            "Marcadores para repasar",
+            "Progreso persistente en localStorage",
+            "Interfaz bilingüe español/inglés"
+        ]
+    }
+    </script>
+
+    <!-- Structured Data: Quiz -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Quiz",
+        "name": "SFCC Architect Challenge",
+        "description": "Test interactivo con más de 180 preguntas sobre Salesforce B2C Commerce Cloud, SFRA, OCAPI, SCAPI, SLAS, PWA Kit, Managed Runtime, seguridad, performance y arquitectura.",
+        "educationalLevel": "Professional",
+        "learningResourceType": "Assessment",
+        "assesses": [
+            "Salesforce B2C Commerce Cloud platform concepts",
+            "Storefront Reference Architecture (SFRA)",
+            "Open Commerce API (OCAPI) and Shopper Commerce API (SCAPI)",
+            "Shopper Login and API Access Service (SLAS)",
+            "PWA Kit and Managed Runtime",
+            "Controllers, models, hooks and ISML templates",
+            "Catalog, pricing, inventory and promotions",
+            "Order management and checkout",
+            "Performance optimization and observability",
+            "Security best practices and PII handling",
+            "Site reliability engineering (SRE) and runbooks"
+        ],
+        "audience": {
+            "@type": "EducationalAudience",
+            "educationalRole": "Developer and Architect"
+        },
+        "inLanguage": ["es", "en"],
+        "isAccessibleForFree": true,
+        "provider": {
+            "@type": "Organization",
+            "name": "SFCC Architect Challenge",
+            "url": "https://sfcc-architect-challenge.example.com/"
+        }
+    }
+    </script>
+
+    <!-- Structured Data: FAQPage -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "¿Qué es SFCC Architect Challenge?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Es un test interactivo con más de 180 preguntas técnicas diseñado para repasar conceptos de Salesforce B2C Commerce Cloud. Cubre SFRA, OCAPI, SCAPI, SLAS, PWA Kit, Managed Runtime, seguridad, performance y arquitectura. Está orientado a desarrolladores y arquitectos que se preparan para entrevistas técnicas, certificaciones o migraciones."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "¿Cuántas preguntas tiene el test SFCC?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "El test contiene más de 180 preguntas distribuidas en 27 bloques temáticos: SFRA y cartridges, controladores, modelos e ISML, catálogo y precios, checkout y pedidos, persistencia, integraciones, jobs batch, entornos y despliegues, contenido y SEO, caché y rendimiento, observabilidad, seguridad, OCAPI/SCAPI/SLAS, PWA Kit, híbrido SFRA+headless, SRE, experimentación y performance testing."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "¿Qué temas cubre el test?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Cubre SFRA (Storefront Reference Architecture), OCAPI (Open Commerce API) y SCAPI (Shopper Commerce API), SLAS (Shopper Login and API Access Service), PWA Kit y Managed Runtime, seguridad, performance, observabilidad, customer groups, promociones, devoluciones, migraciones SiteGenesis a SFRA, storefronts híbridos y SRE."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "¿SFRA vs SiteGenesis?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "SFRA (Storefront Reference Architecture) es la arquitectura de referencia actual basada en controllers, ISML y Script API. SiteGenesis es la arquitectura legacy. SFRA aporta modularidad por cartridges, mejor extensibilidad, hooks bien definidos y compatibilidad con el framework de tests. SiteGenesis está en modo mantenimiento y no se recomienda para proyectos nuevos."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "¿OCAPI vs SCAPI?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "OCAPI (Open Commerce API) es la API tradicional REST de SFCC con sub-APIs Shop, Data y Meta. SCAPI (Shopper Commerce API) es la API moderna diseñada para arquitecturas headless, mobile y BFF. SCAPI usa SLAS para autenticación, está mejor documentada con OpenAPI 3 y se integra de forma nativa con PWA Kit. OCAPI sigue siendo válida para integraciones legacy o backoffice."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "¿Qué es SLAS y cómo se usa?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "SLAS (Shopper Login and API Access Service) es el servicio OAuth 2.1 que gestiona la autenticación y autorización de shoppers contra SCAPI y OCAPI. Soporta clientes públicos (PKCE, sin secret) y privados (con client secret, recomendado en BFF). Devuelve access tokens JWT de 30 minutos y refresh tokens de 90 días en producción."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "¿Cómo preparo una entrevista SFCC senior?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Empieza por SFRA y la arquitectura de cartridges, después controla ISML y los hooks. Domina OCAPI y SCAPI con SLAS para autenticación. Practica decisiones de diseño: cuándo usar middleware, cómo estructurar transacciones, cuándo migrar a PWA Kit, qué poner en un runbook. El test SFCC Architect Challenge te ayuda a detectar lagunas y reforzar conceptos con explicación tras cada respuesta."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "¿Es un simulacro del examen oficial de certificación de Salesforce?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No es un examen oficial de Salesforce ni está afiliado a Salesforce. Es una herramienta de repaso comunitario. Para la certificación oficial consulta Trailhead y los programas de certificación de Salesforce. SFCC Architect Challenge sirve como preparación complementaria para entrevistas técnicas, discovery assessments y validación de conocimientos en migraciones."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "¿Qué nivel de dificultad tiene?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Hay preguntas en tres niveles: básico, intermedio y avanzado. El examen global mezcla 20 preguntas aleatorias. El modo repaso se centra en preguntas falladas. Las preguntas avanzadas cubren migraciones SiteGenesis, storefronts híbridos con eCDN, SRE y performance testing."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "¿Puedo usarlo gratis?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Sí, SFCC Architect Challenge es una herramienta gratuita. El progreso se guarda en localStorage del navegador, sin necesidad de registro. Puedes usarlo tantas veces como quieras y practicar todos los bloques temáticos."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <!-- Structured Data: Organization -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "SFCC Architect Challenge",
+        "url": "https://sfcc-architect-challenge.example.com/",
+        "description": "Test interactivo para repasar conceptos de Salesforce B2C Commerce Cloud",
+        "sameAs": [
+            "https://github.com/SalesforceCommerceCloud/pwa-kit",
+            "https://developer.salesforce.com/docs/commerce/b2c-commerce"
+        ]
+    }
+    </script>
+
+    <!-- Structured Data: BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Inicio",
+                "item": "https://sfcc-architect-challenge.example.com/#home"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Bloques temáticos",
+                "item": "https://sfcc-architect-challenge.example.com/#blocks"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Modos de práctica",
+                "item": "https://sfcc-architect-challenge.example.com/#modes"
+            },
+            {
+                "@type": "ListItem",
+                "position": 4,
+                "name": "Acerca del test",
+                "item": "https://sfcc-architect-challenge.example.com/#about"
+            },
+            {
+                "@type": "ListItem",
+                "position": 5,
+                "name": "FAQ",
+                "item": "https://sfcc-architect-challenge.example.com/#faq"
+            }
+        ]
+    }
+    </script>
+
+    <!-- Structured Data: ItemList of topic blocks -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Bloques temáticos del test SFCC",
+        "itemListOrder": "https://schema.org/ItemListUnordered",
+        "numberOfItems": 27,
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Plataforma y modelo mental"},
+            {"@type": "ListItem", "position": 2, "name": "SFRA y cartridges"},
+            {"@type": "ListItem", "position": 3, "name": "Controladores SFRA"},
+            {"@type": "ListItem", "position": 4, "name": "Modelos, ISML y frontend"},
+            {"@type": "ListItem", "position": 5, "name": "Catálogo y merchandising"},
+            {"@type": "ListItem", "position": 6, "name": "Checkout, pedidos y pagos"},
+            {"@type": "ListItem", "position": 7, "name": "Persistencia y transacciones"},
+            {"@type": "ListItem", "position": 8, "name": "Integraciones y servicios"},
+            {"@type": "ListItem", "position": 9, "name": "Jobs y procesamiento batch"},
+            {"@type": "ListItem", "position": 10, "name": "Entornos y despliegues"},
+            {"@type": "ListItem", "position": 11, "name": "Contenido y SEO"},
+            {"@type": "ListItem", "position": 12, "name": "Caché y rendimiento"},
+            {"@type": "ListItem", "position": 13, "name": "Observabilidad y cuotas"},
+            {"@type": "ListItem", "position": 14, "name": "Seguridad y privacidad"},
+            {"@type": "ListItem", "position": 15, "name": "OCAPI, SCAPI y SLAS"},
+            {"@type": "ListItem", "position": 16, "name": "Testing y actualizaciones"},
+            {"@type": "ListItem", "position": 17, "name": "Escenarios de arquitectura"},
+            {"@type": "ListItem", "position": 18, "name": "Customer lists y segmentación"},
+            {"@type": "ListItem", "position": 19, "name": "Promociones en profundidad"},
+            {"@type": "ListItem", "position": 20, "name": "Búsqueda y merchandising avanzado"},
+            {"@type": "ListItem", "position": 21, "name": "Post-compra y devoluciones"},
+            {"@type": "ListItem", "position": 22, "name": "PWA Kit y Managed Runtime"},
+            {"@type": "ListItem", "position": 23, "name": "Migración SiteGenesis a SFRA"},
+            {"@type": "ListItem", "position": 24, "name": "Storefront híbrido y session bridging"},
+            {"@type": "ListItem", "position": 25, "name": "Operación y SRE para SFCC"},
+            {"@type": "ListItem", "position": 26, "name": "Experimentación y feature flags"},
+            {"@type": "ListItem", "position": 27, "name": "Performance testing y presupuestos"}
+        ]
+    }
+    </script>
+</head>
+<body>
+    <header class="site-header">
+        <a class="brand" href="#home" data-i18n-aria-label="brandAria" aria-label="SFCC Architect Challenge, inicio">
+            <span class="brand-mark">SF</span>
+            <span>Architect Challenge</span>
+        </a>
+        <nav class="header-actions" aria-label="Navegación principal">
+            <a class="header-action" href="#about" data-i18n="navAbout">Acerca de</a>
+            <a class="header-action" href="#faq" data-i18n="navFaq">FAQ</a>
+            <div class="language-selector" role="group" data-i18n-aria-label="langAria" aria-label="Selector de idioma">
+                <button class="lang-btn active" data-lang="es" type="button" aria-pressed="true">ES</button>
+                <button class="lang-btn" data-lang="en" type="button" aria-pressed="false">EN</button>
+            </div>
+            <button class="theme-toggle" id="themeToggle" type="button" data-i18n-aria-label="themeToggleAria" aria-label="Cambiar tema" title="Cambiar tema">
+                <span class="icon-sun" aria-hidden="true">☀️</span>
+                <span class="icon-moon" aria-hidden="true">🌙</span>
+            </button>
+            <button class="header-action" id="resetButton" type="button" data-i18n="resetProgress">Reiniciar progreso</button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero: H1 SEO-rich -->
+        <section class="hero" id="home">
+            <div class="hero-copy">
+                <p class="eyebrow" data-i18n="eyebrow">Preparación técnica avanzada</p>
+                <h1><span data-i18n="heroTitleStart">Test SFCC: ¿Piensas como un arquitecto de</span> <span data-i18n="heroTitleEnd">Salesforce B2C Commerce?</span></h1>
+                <p class="hero-description" data-i18n="heroDesc">180+ preguntas sobre SFRA, OCAPI, SCAPI, SLAS y PWA Kit para repasar conceptos de Salesforce B2C Commerce. Modo desafío, formación, repaso de fallos y examen global. Diseñado para desarrolladores y arquitectos SFCC que se preparan para entrevistas, certificaciones o migraciones.</p>
+                <div class="hero-actions">
+                    <button class="button button-primary" id="startButton" type="button" data-i18n="startBtn">Comenzar test</button>
+                    <button class="button button-secondary" id="modesButton" type="button" data-i18n="modesBtn">Modos de práctica</button>
+                    <a class="button button-secondary" href="#about" data-i18n="learnMoreBtn">Saber más</a>
+                </div>
+            </div>
+            <aside class="hero-panel" data-i18n-aria-label="panelAria" aria-label="Resumen del test">
+                <div class="score-orbit">
+                    <strong id="totalQuestions">0</strong>
+                    <span data-i18n="questionsLabel">preguntas</span>
+                </div>
+                <dl class="hero-stats">
+                    <div><dt id="totalBlocks">0</dt><dd data-i18n="blocksStat">bloques temáticos</dd></div>
+                    <div><dt id="failedLabel">0</dt><dd data-i18n="failedStat">fallos guardados</dd></div>
+                    <div><dt id="bookmarksLabel">0</dt><dd data-i18n="bookmarksStat">marcadores</dd></div>
+                </dl>
+            </aside>
+        </section>
+
+        <!-- SEO: Temas cubiertos -->
+        <section class="topics-seo" id="topics" aria-labelledby="topicsTitle">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow" data-i18n="topicsEyebrow">Cobertura</p>
+                    <h2 id="topicsTitle" data-i18n="topicsTitle">Temas cubiertos en el test SFCC</h2>
+                </div>
+            </div>
+            <div class="topics-grid">
+                <article class="topic-card">
+                    <h3 data-i18n="topic1Title">SFRA y arquitectura de cartridges</h3>
+                    <p data-i18n="topic1Desc">Cartridge path, modules.superModule, hooks.json, append/prepend/replace, ciclo de vida del Controller.</p>
+                </article>
+                <article class="topic-card">
+                    <h3 data-i18n="topic2Title">OCAPI y SCAPI</h3>
+                    <p data-i18n="topic2Desc">Open Commerce API legacy vs Shopper Commerce API moderna, endpoints, errores RFC 7807, custom endpoints.</p>
+                </article>
+                <article class="topic-card">
+                    <h3 data-i18n="topic3Title">SLAS y autenticación</h3>
+                    <p data-i18n="topic3Desc">OAuth 2.1, public vs private client, PKCE, session bridge, Hybrid Auth, channel_id obligatorio.</p>
+                </article>
+                <article class="topic-card">
+                    <h3 data-i18n="topic4Title">PWA Kit y Managed Runtime</h3>
+                    <p data-i18n="topic4Desc">Retail React App, SSR/CSR, commerce-sdk-react, request processor, template extensibility, hybrid storefronts.</p>
+                </article>
+                <article class="topic-card">
+                    <h3 data-i18n="topic5Title">Catálogo, precios y promociones</h3>
+                    <p data-i18n="topic5Desc">Master vs storefront catalog, price books, customer groups, source codes, exclusion sets, combinatoria.</p>
+                </article>
+                <article class="topic-card">
+                    <h3 data-i18n="topic6Title">Checkout, pagos y devoluciones</h3>
+                    <p data-i18n="topic6Desc">Flujo de checkout, autorización vs captura, idempotencia, webhooks firmados, RMAs, refunds.</p>
+                </article>
+                <article class="topic-card">
+                    <h3 data-i18n="topic7Title">Persistencia y transacciones</h3>
+                    <p data-i18n="topic7Desc">System Objects vs Custom Objects, Transaction.wrap, iteradores, búsqueda, paginación.</p>
+                </article>
+                <article class="topic-card">
+                    <h3 data-i18n="topic8Title">Operación, SRE y runbooks</h3>
+                    <p data-i18n="topic8Desc">SLO/SLI, postmortems sin culpa, alertas accionables, rollback vs fix-forward, incident response.</p>
+                </article>
+                <article class="topic-card">
+                    <h3 data-i18n="topic9Title">Migración SiteGenesis a SFRA</h3>
+                    <p data-i18n="topic9Desc">Estrategia strangler, OCAPI hooks a custom endpoints, plan de rollback, regresión y comunicación al merchant.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Quiz UI: Bloques temáticos -->
+        <section class="dashboard" id="blocks" aria-labelledby="blocksTitle">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow" data-i18n="pathEyebrow">Ruta de aprendizaje</p>
+                    <h2 id="blocksTitle" data-i18n="blocksTitle">Bloques temáticos</h2>
+                </div>
+                <div class="overall-progress" data-i18n-aria-label="progressAria" aria-label="Progreso general">
+                    <span id="progressLabel" data-i18n="progressLabel">0 de 0 respondidas</span>
+                    <div class="progress-track"><span id="progressBar"></span></div>
+                </div>
+            </div>
+            <div class="block-grid" id="blockGrid"></div>
+        </section>
+
+        <section class="modes hidden" id="modes" aria-labelledby="modeTitle">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow" data-i18n="modesEyebrow">Modos de práctica</p>
+                    <h2 id="modeTitle" data-i18n="modesTitle">Entrena como un arquitecto</h2>
+                </div>
+                <button class="text-button" id="backFromModes" type="button" data-i18n="backToBlocks">← Volver a bloques</button>
+            </div>
+            <div class="modes-grid">
+                <button class="mode-card" id="modeTraining" type="button">
+                    <span class="mode-badge" data-i18n="modeTrainingBadge">Recomendado</span>
+                    <h3 data-i18n="modeTrainingTitle">Modo formación</h3>
+                    <p data-i18n="modeTrainingDesc">Recorre un bloque viendo la explicación tras cada respuesta. Ideal para asentar conceptos.</p>
+                    <label class="inline-select" onclick="event.stopPropagation()">
+                        <span data-i18n="blockLabel">Bloque:</span>
+                        <select id="trainingBlockSelect"></select>
+                    </label>
+                </button>
+                <button class="mode-card" id="modeReview" type="button">
+                    <span class="mode-badge" data-i18n="modeReviewBadge">Repaso</span>
+                    <h3 data-i18n="modeReviewTitle">Repaso de fallos</h3>
+                    <p><span data-i18n="modeReviewDescStart">Solo preguntas que has fallado.</span> <strong id="failedCount">0</strong> <span data-i18n="available">disponibles.</span></p>
+                </button>
+                <button class="mode-card" id="modeBookmarks" type="button">
+                    <span class="mode-badge" data-i18n="modeBookmarksBadge">Marcadores</span>
+                    <h3 data-i18n="modeBookmarksTitle">Marcadores</h3>
+                    <p><span data-i18n="modeBookmarksDescStart">Practica las preguntas que marcaste para revisar.</span> <strong id="bookmarksCount">0</strong> <span data-i18n="saved">guardados.</span></p>
+                </button>
+                <button class="mode-card" id="modeGlobal" type="button">
+                    <span class="mode-badge" data-i18n="modeExamBadge">Examen</span>
+                    <h3 data-i18n="modeExamTitle">Examen global</h3>
+                    <p data-i18n="modeExamDesc">20 preguntas aleatorias de todos los bloques. Filtro de dificultad opcional.</p>
+                    <label class="inline-select" onclick="event.stopPropagation()">
+                        <span data-i18n="difficultyLabel">Dificultad:</span>
+                        <select id="difficultyFilter">
+                            <option value="all" data-i18n="diffAll">Todas</option>
+                            <option value="1" data-i18n="diff1">Básico</option>
+                            <option value="2" data-i18n="diff2">Intermedio</option>
+                            <option value="3" data-i18n="diff3">Avanzado</option>
+                        </select>
+                    </label>
+                </button>
+                <div class="mode-card mode-card-search">
+                    <span class="mode-badge" data-i18n="modeSearchBadge">Búsqueda</span>
+                    <h3 data-i18n="modeSearchTitle">Buscar preguntas</h3>
+                    <p data-i18n="modeSearchDesc">Filtra por palabra clave en el enunciado, opciones o explicación.</p>
+                    <div class="search-row">
+                        <input id="searchInput" type="search" data-i18n-placeholder="searchPlaceholder" placeholder="p. ej. CSRF, PWA Kit, hook">
+                        <button class="button button-primary" id="searchButton" type="button" data-i18n="searchBtn">Buscar</button>
+                    </div>
+                    <div id="searchResults" class="search-results"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="quiz hidden" id="quizView" aria-live="polite">
+            <div class="quiz-topbar">
+                <button class="text-button" id="backButton" type="button" data-i18n="quizBack">← Volver a bloques</button>
+                <div class="quiz-pills">
+                    <span class="topic-pill" id="topicPill"></span>
+                    <span class="mode-pill" id="modePill"></span>
+                    <span class="difficulty-pill" id="difficultyPill"></span>
+                </div>
+                <div class="quiz-score"><span data-i18n="correctLabel">Aciertos</span><strong id="quizScore">0/0</strong></div>
+            </div>
+            <div class="quiz-card">
+                <div class="quiz-meta">
+                    <span id="questionCounter"></span>
+                    <button class="bookmark-button" id="bookmarkButton" type="button" aria-pressed="false" data-i18n-aria-label="bookmarkAria" aria-label="Marcar para revisar">☆</button>
+                </div>
+                <div class="question-progress"><span id="questionProgressBar"></span></div>
+                <h2 id="questionText"></h2>
+                <div class="answers" id="answers"></div>
+                <div class="feedback hidden" id="feedback">
+                    <strong id="feedbackTitle"></strong>
+                    <p id="feedbackText"></p>
+                </div>
+                <button class="button button-primary next-button hidden" id="nextButton" type="button" data-i18n="nextBtn">Siguiente pregunta</button>
+            </div>
+        </section>
+
+        <section class="results hidden" id="resultsView">
+            <div class="result-card">
+                <p class="eyebrow" data-i18n="resultsEyebrow">Bloque completado</p>
+                <div class="result-score"><strong id="resultPercent">0%</strong><span id="resultLevel"></span></div>
+                <h2 id="resultTitle"></h2>
+                <p id="resultText"></p>
+                <div class="result-actions">
+                    <button class="button button-primary" id="retryButton" type="button" data-i18n="retryBtn">Repetir</button>
+                    <button class="button button-secondary" id="continueButton" type="button" data-i18n="chooseOtherBtn">Elegir otro bloque</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEO: About / Cómo usar -->
+        <section class="about-seo" id="about" aria-labelledby="aboutTitle">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow" data-i18n="aboutEyebrow">Acerca del test</p>
+                    <h2 id="aboutTitle" data-i18n="aboutTitle">¿Qué es SFCC Architect Challenge?</h2>
+                </div>
+            </div>
+            <div class="about-content">
+                <p data-i18n-html="aboutP1">SFCC Architect Challenge es un test interactivo de <strong>Salesforce B2C Commerce Cloud (SFCC)</strong> con más de 180 preguntas distribuidas en 27 bloques temáticos. Está pensado para repasar conceptos reales de plataforma: SFRA, OCAPI, SCAPI, SLAS, PWA Kit, Managed Runtime, seguridad, observabilidad y arquitectura.</p>
+                <p data-i18n="aboutP2">El test no es un examen oficial de Salesforce, sino una herramienta de preparación complementaria para entrevistas técnicas, discovery assessments en proyectos de migración, validación de equipos y refuerzo de conceptos antes de una certificación. Las preguntas se inspiran en escenarios reales de proyectos enterprise y en la documentación oficial.</p>
+                <h3 data-i18n="howUseTitle">Cómo usar el test SFCC</h3>
+                <ol class="how-list">
+                    <li data-i18n-html="howUse1"><strong>Selecciona un bloque</strong> según el tema que quieras repasar (SFRA, OCAPI, SLAS, PWA Kit, seguridad…).</li>
+                    <li data-i18n-html="howUse2"><strong>Responde con honestidad</strong> y revisa la explicación tras cada respuesta. El modo formación muestra el razonamiento incluso si aciertas.</li>
+                    <li data-i18n-html="howUse3"><strong>Usa "Repaso de fallos"</strong> para reforzar lo que más te cuesta. Solo aparecen las preguntas que has fallado previamente.</li>
+                    <li data-i18n-html="howUse4"><strong>Haz el examen global</strong> cuando te sientas preparado: 20 preguntas aleatorias con filtro de dificultad, ideal para simular la presión de una entrevista real.</li>
+                    <li data-i18n-html="howUse5"><strong>Marca con ☆</strong> las preguntas que quieras repasar más adelante. Se guardan en marcadores persistentes.</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- SEO: FAQ (crawleable + visible) -->
+        <section class="faq-seo" id="faq" aria-labelledby="faqTitle">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow" data-i18n="faqEyebrow">Preguntas frecuentes</p>
+                    <h2 id="faqTitle" data-i18n="faqTitle">FAQ sobre SFCC y el test</h2>
+                </div>
+            </div>
+            <div class="faq-list">
+                <details>
+                    <summary data-i18n="faq1Q">¿Qué es SFCC Architect Challenge?</summary>
+                    <div class="faq-answer">
+                        <p data-i18n="faq1A">Es un test interactivo con más de 180 preguntas técnicas diseñado para repasar conceptos de Salesforce B2C Commerce Cloud. Cubre SFRA, OCAPI, SCAPI, SLAS, PWA Kit, Managed Runtime, seguridad, performance y arquitectura. Está orientado a desarrolladores y arquitectos que se preparan para entrevistas técnicas, certificaciones o migraciones.</p>
+                    </div>
+                </details>
+                <details>
+                    <summary data-i18n="faq2Q">¿Cuántas preguntas tiene el test SFCC?</summary>
+                    <div class="faq-answer">
+                        <p data-i18n="faq2A">El test contiene más de 180 preguntas distribuidas en 27 bloques temáticos: SFRA y cartridges, controladores, modelos e ISML, catálogo y precios, checkout y pedidos, persistencia, integraciones, jobs batch, entornos y despliegues, contenido y SEO, caché y rendimiento, observabilidad, seguridad, OCAPI/SCAPI/SLAS, PWA Kit, híbrido SFRA+headless, SRE, experimentación y performance testing.</p>
+                    </div>
+                </details>
+                <details>
+                    <summary data-i18n="faq3Q">¿SFRA vs SiteGenesis?</summary>
+                    <div class="faq-answer">
+                        <p data-i18n="faq3A">SFRA (Storefront Reference Architecture) es la arquitectura de referencia actual basada en controllers, ISML y Script API. SiteGenesis es la arquitectura legacy. SFRA aporta modularidad por cartridges, mejor extensibilidad, hooks bien definidos y compatibilidad con el framework de tests. SiteGenesis está en modo mantenimiento y no se recomienda para proyectos nuevos.</p>
+                    </div>
+                </details>
+                <details>
+                    <summary data-i18n="faq4Q">¿OCAPI vs SCAPI?</summary>
+                    <div class="faq-answer">
+                        <p data-i18n="faq4A">OCAPI (Open Commerce API) es la API tradicional REST de SFCC con sub-APIs Shop, Data y Meta. SCAPI (Shopper Commerce API) es la API moderna diseñada para arquitecturas headless, mobile y BFF. SCAPI usa SLAS para autenticación, está mejor documentada con OpenAPI 3 y se integra de forma nativa con PWA Kit. OCAPI sigue siendo válida para integraciones legacy o backoffice.</p>
+                    </div>
+                </details>
+                <details>
+                    <summary data-i18n="faq5Q">¿Qué es SLAS y cómo se usa?</summary>
+                    <div class="faq-answer">
+                        <p data-i18n-html="faq5A">SLAS (Shopper Login and API Access Service) es el servicio OAuth 2.1 que gestiona la autenticación y autorización de shoppers contra SCAPI y OCAPI. Soporta clientes públicos (PKCE, sin secret) y privados (con client secret, recomendado en BFF). Devuelve access tokens JWT de 30 minutos y refresh tokens de 90 días en producción. El parámetro <code>channel_id</code> es obligatorio en guest tokens desde marzo de 2025.</p>
+                    </div>
+                </details>
+                <details>
+                    <summary data-i18n="faq6Q">¿Qué es PWA Kit y Managed Runtime?</summary>
+                    <div class="faq-answer">
+                        <p data-i18n="faq6A">PWA Kit es el framework oficial de Salesforce para construir storefronts composables basados en React. Incluye el Retail React App (template con PDP, PLP, cart, checkout) y el SDK commerce-sdk-react para hablar con SCAPI. Managed Runtime (MRT) es el hosting serverless de Salesforce para PWA Kit, con CDN integrado y TTL por defecto de 600 s. Es la opción recomendada para storefronts headless sobre SFCC.</p>
+                    </div>
+                </details>
+                <details>
+                    <summary data-i18n="faq7Q">¿Cómo preparo una entrevista SFCC senior?</summary>
+                    <div class="faq-answer">
+                        <p data-i18n="faq7A">Empieza por SFRA y la arquitectura de cartridges, después controla ISML y los hooks. Domina OCAPI y SCAPI con SLAS para autenticación. Practica decisiones de diseño: cuándo usar middleware, cómo estructurar transacciones, cuándo migrar a PWA Kit, qué poner en un runbook. El test SFCC Architect Challenge te ayuda a detectar lagunas y reforzar conceptos con explicación tras cada respuesta.</p>
+                    </div>
+                </details>
+                <details>
+                    <summary data-i18n="faq8Q">¿Es un simulacro del examen oficial de certificación?</summary>
+                    <div class="faq-answer">
+                        <p data-i18n="faq8A">No es un examen oficial de Salesforce ni está afiliado a Salesforce. Es una herramienta de repaso comunitario. Para la certificación oficial consulta Trailhead y los programas de certificación de Salesforce. SFCC Architect Challenge sirve como preparación complementaria para entrevistas técnicas, discovery assessments y validación de conocimientos en migraciones.</p>
+                    </div>
+                </details>
+                <details>
+                    <summary data-i18n="faq9Q">¿Qué nivel de dificultad tiene el test?</summary>
+                    <div class="faq-answer">
+                        <p data-i18n="faq9A">Hay preguntas en tres niveles: básico, intermedio y avanzado. El examen global mezcla 20 preguntas aleatorias con filtro de dificultad. El modo repaso se centra en preguntas falladas. Las preguntas avanzadas cubren migraciones SiteGenesis, storefronts híbridos con eCDN, SRE y performance testing.</p>
+                    </div>
+                </details>
+                <details>
+                    <summary data-i18n="faq10Q">¿Puedo usar SFCC Architect Challenge gratis?</summary>
+                    <div class="faq-answer">
+                        <p data-i18n="faq10A">Sí, es una herramienta gratuita. El progreso se guarda en localStorage del navegador, sin necesidad de registro. Puedes usarlo tantas veces como quieras y practicar todos los bloques temáticos en modo desafío, formación, repaso de fallos o examen global.</p>
+                    </div>
+                </details>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p class="footer-attribution" data-i18n-html="footerAttribution">Esta web ha sido creada como proyecto personal de <em>vibe coding</em> utilizando <strong>MiniMax - M3</strong>. Co-autoría técnica: <strong>MiniMax-M3</strong>.</p>
+        <p class="footer-links">
+            <a href="https://developer.salesforce.com/docs/commerce/b2c-commerce" target="_blank" rel="noopener" data-i18n="footerDocs">Documentación oficial SFCC</a>
+            <span aria-hidden="true">·</span>
+            <a href="https://github.com/SalesforceCommerceCloud/pwa-kit" target="_blank" rel="noopener" data-i18n="footerPwaKit">PWA Kit en GitHub</a>
+            <span aria-hidden="true">·</span>
+            <a href="#home" data-i18n="footerBack">Volver arriba</a>
+        </p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

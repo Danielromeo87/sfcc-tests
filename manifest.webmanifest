@@ -1,0 +1,45 @@
+{
+  "name": "SFCC Architect Challenge",
+  "short_name": "SFCC Quiz",
+  "description": "Test interactivo para repasar conceptos de Salesforce B2C Commerce Cloud: SFRA, OCAPI, SCAPI, SLAS y PWA Kit.",
+  "start_url": "/?utm_source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#1267e5",
+  "background_color": "#f4f1eb",
+  "lang": "es",
+  "dir": "ltr",
+  "categories": ["education", "productivity"],
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Empezar test",
+      "short_name": "Test",
+      "description": "Comenzar el test SFCC",
+      "url": "./#start",
+      "icons": [{ "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml" }]
+    },
+    {
+      "name": "Bloques temáticos",
+      "short_name": "Bloques",
+      "description": "Explorar todos los bloques temáticos",
+      "url": "./#blocks",
+      "icons": [{ "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml" }]
+    },
+    {
+      "name": "FAQ",
+      "short_name": "FAQ",
+      "description": "Preguntas frecuentes sobre SFCC",
+      "url": "./#faq",
+      "icons": [{ "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml" }]
+    }
+  ]
+}

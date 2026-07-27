@@ -1,0 +1,32 @@
+# ── Version control & tooling ────────────────────────────────────
+.git/
+.gitignore
+.gitattributes
+
+# ── Documentation (not web-facing) ───────────────────────────────
+README.md
+DEPLOY.md
+SEO_PLAN.md
+sfcc_senior_architect_interview_guide.md
+ocapi_scapi_pwa_apuntes.md
+
+# ── Backup / archive files ───────────────────────────────────────
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+
+# ── Editor / OS junk ────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# ── Docker self-reference (avoid infinite recursion) ─────────────
+Dockerfile
+docker-compose*.yml
+.dockerignore
+
+# ── OpenCode / dev artifacts ─────────────────────────────────────
+.opencode/

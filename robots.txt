@@ -1,5 +1,5 @@
-# robots.txt for SFCC Architect Challenge
-# https://example.com/sfcc-architect-challenge/robots.txt
+﻿# robots.txt for SFCC Architect Challenge
+# https://test-salesforcecommerce.cloud/robots.txt
 
 User-agent: *
 Allow: /
@@ -44,4 +44,4 @@ User-agent: PerplexityBot
 Allow: /
 
 # Sitemap location
-Sitemap: https://sfcc-architect-challenge.example.com/sitemap.xml
+Sitemap: https://test-salesforcecommerce.cloud/sitemap.xml

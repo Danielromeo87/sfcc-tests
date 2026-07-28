@@ -1076,10 +1076,15 @@ function localizedQuestion(question) {
             explanation: question && question.explanation || ''
         };
     }
-    // Priorizar traducción runtime (Q_TRANSLATIONS[id][lang]), luego i18n[lang], luego fallback a es
-    const runtime = Q_TRANSLATIONS && Q_TRANSLATIONS[question.id] && Q_TRANSLATIONS[question.id][lang];
+    // Priorizar traduccion runtime (Q_TRANSLATIONS[id]) si existe y lang es 'en'.
+    // Q_TRANSLATIONS tiene estructura plana: { q1: { text, options, explanation } } (sin envoltura {en}).
+    // En espanol siempre se usa el baked-in de question.i18n.es.
+    let runtime = null;
+    if (lang === 'en' && Q_TRANSLATIONS && Q_TRANSLATIONS[question.id]) {
+        runtime = Q_TRANSLATIONS[question.id];
+    }
     const baked = question.i18n[lang] || question.i18n.es;
-    const final = runtime || baked || question.i18n.es;
+    const final = (lang === 'en' && runtime) ? runtime : (baked || question.i18n.es);
     return {
         text: final.text,
         options: final.options || [],

@@ -1,20 +1,22 @@
-# ── Scripts de utilidad local (no parte del producto) ───────────────
+# Scripts de utilidad local (no parte del producto)
 *.ps1
 *.sh
 *.bat
 *.tmp
 
-# ── API keys y secretos locales ───────────────────────────────────
+# API keys y secretos locales
 .deepl-key
 .env
 .env.*
 *.local
 
-# ── Ficheros generados por scripts de traducción ───────────────────
+# Ficheros generados por scripts de traducción
 questions-en.json
 
-# ── Override reglas (importante incluir nginx.conf y Dockerfile) ─
+# Override reglas (importante incluir nginx.conf y Dockerfile)
 !nginx.conf
 !Dockerfile
 
+# Python cache
 __pycache__/
+*.pyc

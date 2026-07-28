@@ -4,9 +4,15 @@
 *.bat
 *.tmp
 
-# ── Archivos de configuración local con info sensible ──────────────
+# ── API keys y secretos locales ───────────────────────────────────
+.deepl-key
 .env
 .env.*
 *.local
+
+# ── Ficheros generados por scripts de traducción ───────────────────
+questions-en.json
+
+# ── Override reglas (importante incluir nginx.conf y Dockerfile) ─
 !nginx.conf
 !Dockerfile

@@ -1,0 +1,12 @@
+// questions-en.js - Carga las traducciones de las preguntas al inglés.
+// Este archivo se genera con el script Python `translate_questions.py`.
+//
+// Para usarlo:
+//   1. Genera questions-en.json con: python translate_questions.py
+//   2. Convierte a JS: python -c "import json; print(f'window.Q_TRANSLATIONS = {json.dumps(json.load(open(\"questions-en.json\")), ensure_ascii=False)};')" > questions-en.js
+//   3. Inclúyelo en index.html antes de app.js
+//
+// Formato: { 'q1': { text, options, explanation }, 'q2': {...}, ... }
+window.Q_TRANSLATIONS = {
+  // Placeholder - reemplaza con el contenido real generado
+};

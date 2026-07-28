@@ -24,6 +24,7 @@ COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY index.html              /usr/share/nginx/html/index.html
 COPY styles.css              /usr/share/nginx/html/styles.css
 COPY app.js                  /usr/share/nginx/html/app.js
+COPY questions-en.js         /usr/share/nginx/html/questions-en.js
 COPY favicon.svg             /usr/share/nginx/html/favicon.svg
 COPY og-image.png            /usr/share/nginx/html/og-image.png
 COPY manifest.webmanifest    /usr/share/nginx/html/manifest.webmanifest

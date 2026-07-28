@@ -2,8 +2,67 @@
 
 let _qid = 0;
 function q(text, options, answer, explanation, difficulty) {
-    return { id: 'q' + (++_qid), text: text, options: options, answer: answer, explanation: explanation, difficulty: difficulty || 2 };
+    // Constructor de pregunta. Acepta tanto strings sueltos (formato antiguo, en español)
+    // como un objeto { es, en } para preguntas internacionalizadas.
+    if (typeof text === 'object' && text !== null && (text.es || text.en)) {
+        return {
+            id: 'q' + (++_qid),
+            i18n: {
+                es: text.es || { text: '', options: [], explanation: '' },
+                en: text.en || text.es || { text: '', options: [], explanation: '' }
+            },
+            answer: answer,
+            difficulty: difficulty || 2
+        };
+    }
+    // Formato legacy: todo en español
+    return {
+        id: 'q' + (++_qid),
+        i18n: {
+            es: { text: text, options: options, explanation: explanation },
+            en: null  // se rellena en runtime si existe Q_TRANSLATIONS, si no fallback a es
+        },
+        answer: answer,
+        difficulty: difficulty || 2
+    };
 }
+
+// Carga traducciones desde un objeto global (rellenado por script de build o runtime).
+// Formato: { 'q1': { en: { text, options, explanation } }, 'q2': {...} }
+// Se rellena desde window.Q_TRANSLATIONS (definido en questions-en.js si existe)
+// o queda vacio y se usa fallback a espanol.
+let Q_TRANSLATIONS = (typeof window !== 'undefined' && window.Q_TRANSLATIONS) || {};
+
+// Traducciones de los titulos de bloques (los indices coinciden con el array `blocks`).
+const BLOCK_TITLES = [
+    { es: "Plataforma y modelo mental",                  en: "Platform & mental model" },
+    { es: "SFRA y cartridges",                          en: "SFRA & cartridges" },
+    { es: "Controladores SFRA",                         en: "SFRA controllers" },
+    { es: "Modelos, ISML y frontend",                   en: "Models, ISML & frontend" },
+    { es: "Catálogo y merchandising",                   en: "Catalog & merchandising" },
+    { es: "Checkout, orders y pagos",                   en: "Checkout, orders & payments" },
+    { es: "Persistencia y transacciones",               en: "Persistence & transactions" },
+    { es: "Integraciones y servicios",                  en: "Integrations & services" },
+    { es: "Jobs y procesamiento batch",                 en: "Jobs & batch processing" },
+    { es: "Entornos y deployments",                    en: "Environments & deployments" },
+    { es: "Contenido y SEO",                           en: "Content & SEO" },
+    { es: "Caché y performance",                       en: "Cache & performance" },
+    { es: "Observabilidad y cuotas",                   en: "Observability & quotas" },
+    { es: "Seguridad y privacidad",                    en: "Security & privacy" },
+    { es: "OCAPI, SCAPI y SLAS",                       en: "OCAPI, SCAPI & SLAS" },
+    { es: "Testing y actualizaciones",                  en: "Testing & upgrades" },
+    { es: "Escenarios de arquitectura",                 en: "Architecture scenarios" },
+    { es: "Customer lists y segmentación",              en: "Customer lists & segmentation" },
+    { es: "Promociones en profundidad",                 en: "Promotions in depth" },
+    { es: "Búsqueda y merchandising avanzado",          en: "Search & advanced merchandising" },
+    { es: "Post-compra y devoluciones",                 en: "Post-purchase & returns" },
+    { es: "PWA Kit y Managed Runtime",                 en: "PWA Kit & Managed Runtime" },
+    { es: "Migración SiteGenesis a SFRA",              en: "SiteGenesis to SFRA migration" },
+    { es: "Storefront híbrido y session bridging",     en: "Hybrid storefront & session bridging" },
+    { es: "Operación y SRE para SFCC",                 en: "Operations & SRE for SFCC" },
+    { es: "Experimentación y feature flags",            en: "Experimentation & feature flags" },
+    { es: "Performance testing y presupuestos",          en: "Performance testing & budgets" }
+];
 
 const blocks = [
     {
@@ -866,12 +925,13 @@ function bookmarkedQuestions() {
 function searchQuestions(query) {
     const needle = query.trim().toLowerCase();
     if (!needle) return [];
-    return allQuestions().filter((q) =>
-        q.text.toLowerCase().includes(needle) ||
-        q.explanation.toLowerCase().includes(needle) ||
-        q.options.some((o) => o.toLowerCase().includes(needle)) ||
-        q.blockTitle.toLowerCase().includes(needle)
-    );
+    return allQuestions().filter((q) => {
+        const loc = localizedQuestion(q);
+        return loc.text.toLowerCase().includes(needle) ||
+            loc.explanation.toLowerCase().includes(needle) ||
+            loc.options.some((o) => o.toLowerCase().includes(needle)) ||
+            (q.blockTitle || '').toLowerCase().includes(needle);
+    });
 }
 
 function globalQuestions() {
@@ -881,6 +941,23 @@ function globalQuestions() {
         pool = pool.filter((q) => String(q.difficulty) === String(state.difficultyFilter));
     }
     return pool.slice().sort(() => Math.random() - 0.5).slice(0, 20);
+}
+
+function blockTitle(block, index) {
+    const lang = state.lang || 'es';
+    // 1) Traducción baked-in en block.i18n
+    if (block.i18n && block.i18n[lang] && block.i18n[lang].title) return block.i18n[lang].title;
+    // 2) Lookup por índice en BLOCK_TITLES
+    if (typeof BLOCK_TITLES !== 'undefined' && BLOCK_TITLES[index] && BLOCK_TITLES[index][lang]) {
+        return BLOCK_TITLES[index][lang];
+    }
+    // 3) Lookup por clave i18n (blockTitleKey)
+    if (block.titleKey) {
+        const translated = t(block.titleKey);
+        if (translated && translated !== block.titleKey) return translated;
+    }
+    // 4) Fallback al título hardcoded
+    return block.title;
 }
 
 function renderBlocks() {
@@ -894,7 +971,7 @@ function renderBlocks() {
         card.innerHTML = `
             <span class="block-number">BLOQUE ${String(index + 1).padStart(2, '0')}</span>
             <span class="block-icon" aria-hidden="true">${block.icon}</span>
-            <h3>${block.title}</h3>
+            <h3>${blockTitle(block, index)}</h3>
             <span class="block-level">${block.level ? (t('levelNames')[block.level] || block.level) : ''}</span>
             <span class="block-card-footer">
                 <span>${block.questions.length} ${t('questionsLabel')}${failedCount ? ' · ' + failedCount + ' ' + t('failedLabelCount') : ''}</span>
@@ -962,7 +1039,7 @@ function populateTrainingBlockSelect() {
     blocks.forEach((b, i) => {
         const option = document.createElement('option');
         option.value = String(i);
-        option.textContent = `B${String(i + 1).padStart(2, '0')} · ${b.title}`;
+        option.textContent = `B${String(i + 1).padStart(2, '0')} · ${blockTitle(b, i)}`;
         select.appendChild(option);
     });
 }
@@ -989,17 +1066,39 @@ function shuffleOptions(options, originalAnswer) {
     };
 }
 
+// Helper: obtiene el texto localizado de una pregunta
+function localizedQuestion(question) {
+    const lang = state.lang || 'es';
+    if (!question || !question.i18n) {
+        return {
+            text: question && question.text || '',
+            options: (question && question.options) || [],
+            explanation: question && question.explanation || ''
+        };
+    }
+    // Priorizar traducción runtime (Q_TRANSLATIONS[id][lang]), luego i18n[lang], luego fallback a es
+    const runtime = Q_TRANSLATIONS && Q_TRANSLATIONS[question.id] && Q_TRANSLATIONS[question.id][lang];
+    const baked = question.i18n[lang] || question.i18n.es;
+    const final = runtime || baked || question.i18n.es;
+    return {
+        text: final.text,
+        options: final.options || [],
+        explanation: final.explanation || ''
+    };
+}
+
 function renderQuestion() {
     const question = state.questionList[state.questionIndex];
     const total = state.questionList.length;
     const isGlobal = state.mode === MODES.GLOBAL || state.mode === MODES.REVIEW_FAILED || state.mode === MODES.BOOKMARKS || state.mode === MODES.SEARCH;
     state.answered = false;
-    const shuffled = shuffleOptions(question.options, question.answer);
+    const loc = localizedQuestion(question);
+    const shuffled = shuffleOptions(loc.options, question.answer);
     state.currentShuffle = shuffled;
-    $('topicPill').textContent = isGlobal ? question.blockTitle : blocks[state.blockIndex].title;
+    $('topicPill').textContent = isGlobal ? question.blockTitle : blockTitle(blocks[state.blockIndex], state.blockIndex);
     $('modePill').textContent = modeLabel(state.mode);
     $('questionCounter').textContent = `${state.questionIndex + 1} / ${total}`;
-    $('questionText').textContent = question.text;
+    $('questionText').textContent = loc.text;
     $('quizScore').textContent = `${state.correct}/${state.questionIndex}`;
     $('questionProgressBar').style.width = `${(state.questionIndex / total) * 100}%`;
     $('difficultyPill').textContent = difficultyName(question.difficulty) || '';
@@ -1042,10 +1141,12 @@ function selectAnswer(selectedIndex) {
 
     if (state.mode === MODES.TRAINING) {
         $('feedbackTitle').textContent = t('feedbackTraining');
-        $('feedbackText').textContent = `${correct ? (state.lang === 'en' ? '✓ Your answer is correct. ' : '✓ Tu respuesta es correcta. ') : ''}${question.explanation}`;
+        const locAns = localizedQuestion(question);
+        $('feedbackText').textContent = `${correct ? (state.lang === 'en' ? '✓ Your answer is correct. ' : '✓ Tu respuesta es correcta. ') : ''}${locAns.explanation}`;
     } else {
         $('feedbackTitle').textContent = correct ? t('feedbackCorrect') : t('feedbackWrong');
-        $('feedbackText').textContent = question.explanation;
+        const locAns2 = localizedQuestion(question);
+        $('feedbackText').textContent = locAns2.explanation;
     }
     feedback.classList.remove('hidden');
 
@@ -1171,13 +1272,14 @@ function runSearch() {
     const list = document.createElement('div');
     list.className = 'search-list';
     results.slice(0, 30).forEach((q) => {
+        const loc = localizedQuestion(q);
         const card = document.createElement('button');
         card.type = 'button';
         card.className = 'search-card';
         card.innerHTML = `
             <span class="block-number">${q.blockTitle}</span>
             <span class="difficulty-pill difficulty-${q.difficulty}">${difficultyName(q.difficulty)}</span>
-            <p>${q.text}</p>`;
+            <p>${loc.text}</p>`;
         card.addEventListener('click', () => startMode(MODES.SEARCH, [q]));
         list.appendChild(card);
     });

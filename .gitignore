@@ -16,3 +16,5 @@ questions-en.json
 # ── Override reglas (importante incluir nginx.conf y Dockerfile) ─
 !nginx.conf
 !Dockerfile
+
+__pycache__/

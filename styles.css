@@ -565,3 +565,12 @@ footer p { margin: 0 0 10px; }
     .result-actions { flex-direction: column; }
     .search-row { flex-direction: column; }
 }
+
+/* Mobile (<= 600px): simplify header to avoid overflow */
+@media (max-width: 600px) {
+    .site-header { gap: 12px; }
+    .brand-text { display: none; }
+    .header-action.nav-link { display: none; }
+    #resetButton { font-size: 0; padding: 6px 8px; }
+    #resetButton::before { content: "\21BB"; font-size: 16px; }
+}

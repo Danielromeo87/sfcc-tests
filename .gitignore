@@ -1,0 +1,12 @@
+# ── Scripts de utilidad local (no parte del producto) ───────────────
+*.ps1
+*.sh
+*.bat
+*.tmp
+
+# ── Archivos de configuración local con info sensible ──────────────
+.env
+.env.*
+*.local
+!nginx.conf
+!Dockerfile
